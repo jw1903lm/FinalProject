@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 3, 2019 7:58:03 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="entity.Banners" table="Banners" schema="dbo" catalog="ShowyClothes">
+        <id name="bannerId" type="int">
+            <column name="BannerId" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="catagories" class="entity.Catagories" fetch="select" lazy="false">
+            <column name="CatagoryId" not-null="true" />
+        </many-to-one>
+        <property name="bannerName" type="string">
+            <column name="BannerName" not-null="true" />
+        </property>
+        <property name="bannerDescription" type="string">
+            <column name="BannerDescription" />
+        </property>
+        <property name="bannerImage" type="string">
+            <column name="BannerImage" not-null="true" />
+        </property>
+        <property name="size" type="boolean">
+            <column name="Size" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="Created" length="23" not-null="true" />
+        </property>
+        <property name="isDisabled" type="boolean">
+            <column name="isDisabled" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

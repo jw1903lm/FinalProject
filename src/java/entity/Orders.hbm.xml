@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 3, 2019 7:58:03 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="entity.Orders" table="Orders" schema="dbo" catalog="ShowyClothes">
+        <id name="orderId" type="int">
+            <column name="OrderId" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="cities" class="entity.Cities" fetch="select" lazy="false">
+            <column name="CityId" not-null="true" />
+        </many-to-one>
+        <many-to-one name="orderStatus" class="entity.OrderStatus" fetch="select" lazy="false">
+            <column name="OrderStatusId" />
+        </many-to-one>
+        <many-to-one name="ships" class="entity.Ships" fetch="select" lazy="false">
+            <column name="ShipId" not-null="true" />
+        </many-to-one>
+        <many-to-one name="users" class="entity.Users" fetch="select" lazy="false">
+            <column name="UserId" />
+        </many-to-one>
+        <property name="fullName" type="string">
+            <column name="FullName" length="50" not-null="true" />
+        </property>
+        <property name="phone" type="string">
+            <column name="Phone" length="20" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="Email" length="100" not-null="true" />
+        </property>
+        <property name="userAddress" type="string">
+            <column name="UserAddress" not-null="true" />
+        </property>
+        <property name="postcodeOrZip" type="string">
+            <column name="PostcodeOrZip" length="50" not-null="true" />
+        </property>
+        <property name="totalPrice" type="java.lang.Double">
+            <column name="TotalPrice" precision="53" scale="0" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="Created" length="23" not-null="true" />
+        </property>
+        <property name="isDisabled" type="boolean">
+            <column name="isDisabled" not-null="true" />
+        </property>
+        <set name="orderDetails" table="OrderDetail" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="OrderId" not-null="true" />
+            </key>
+            <one-to-many class="entity.OrderDetail" />
+        </set>
+    </class>
+</hibernate-mapping>

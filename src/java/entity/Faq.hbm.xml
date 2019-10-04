@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 3, 2019 7:58:03 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="entity.Faq" table="Faq" schema="dbo" catalog="ShowyClothes">
+        <id name="faqId" type="int">
+            <column name="FaqId" />
+            <generator class="identity" />
+        </id>
+        <property name="question" type="string">
+            <column name="Question" not-null="true" />
+        </property>
+        <property name="answer" type="string">
+            <column name="Answer" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="Created" length="23" not-null="true" />
+        </property>
+        <property name="isDisabled" type="boolean">
+            <column name="isDisabled" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

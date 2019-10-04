@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 3, 2019 7:58:03 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="entity.Sizes" table="Sizes" schema="dbo" catalog="ShowyClothes">
+        <id name="sizeId" type="int">
+            <column name="SizeId" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="products" class="entity.Products" fetch="select" lazy="false">
+            <column name="ProductId" not-null="true" />
+        </many-to-one>
+        <property name="sizeName" type="string">
+            <column name="SizeName" length="5" not-null="true" />
+        </property>
+        <property name="stock" type="int">
+            <column name="Stock" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="Created" length="23" not-null="true" />
+        </property>
+        <property name="isDisabled" type="boolean">
+            <column name="isDisabled" not-null="true" />
+        </property>
+        <set name="orderDetails" table="OrderDetail" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="SizeId" not-null="true" />
+            </key>
+            <one-to-many class="entity.OrderDetail" />
+        </set>
+    </class>
+</hibernate-mapping>

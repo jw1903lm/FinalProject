@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 3, 2019 7:58:03 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="entity.WishList" table="WishList" schema="dbo" catalog="ShowyClothes">
+        <composite-id name="id" class="entity.WishListId">
+            <key-property name="productId" type="int">
+                <column name="ProductId" />
+            </key-property>
+            <key-property name="userId" type="int">
+                <column name="UserId" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="users" class="entity.Users" update="false" insert="false" fetch="select" lazy="false">
+            <column name="UserId" not-null="true" />
+        </many-to-one>
+        <many-to-one name="products" class="entity.Products" update="false" insert="false" fetch="select" lazy="false">
+            <column name="ProductId" not-null="true" />
+        </many-to-one>
+        <property name="created" type="timestamp">
+            <column name="Created" length="23" not-null="true" />
+        </property>
+        <property name="isDisabled" type="boolean">
+            <column name="isDisabled" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

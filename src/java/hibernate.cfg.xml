@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+    <property name="hibernate.connection.url">jdbc:sqlserver://localhost:57557;databaseName=ShowyClothes</property>
+    <property name="hibernate.connection.username">sa</property>
+    <property name="hibernate.connection.password">123456</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <mapping resource="entity/Orders.hbm.xml"/>
+    <mapping resource="entity/Banners.hbm.xml"/>
+    <mapping resource="entity/Admins.hbm.xml"/>
+    <mapping resource="entity/OrderStatus.hbm.xml"/>
+    <mapping resource="entity/Cities.hbm.xml"/>
+    <mapping resource="entity/Brands.hbm.xml"/>
+    <mapping resource="entity/Sliders.hbm.xml"/>
+    <mapping resource="entity/OrderDetail.hbm.xml"/>
+    <mapping resource="entity/Sizes.hbm.xml"/>
+    <mapping resource="entity/ProductComments.hbm.xml"/>
+    <mapping resource="entity/Catagories.hbm.xml"/>
+    <mapping resource="entity/ShopInformation.hbm.xml"/>
+    <mapping resource="entity/Products.hbm.xml"/>
+    <mapping resource="entity/ProductImages.hbm.xml"/>
+    <mapping resource="entity/UserFeedbacks.hbm.xml"/>
+    <mapping resource="entity/WishList.hbm.xml"/>
+    <mapping resource="entity/Ships.hbm.xml"/>
+    <mapping resource="entity/Sales.hbm.xml"/>
+    <mapping resource="entity/Stores.hbm.xml"/>
+    <mapping resource="entity/Faq.hbm.xml"/>
+    <mapping resource="entity/Users.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

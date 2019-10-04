@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 3, 2019 7:58:03 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="entity.Ships" table="Ships" schema="dbo" catalog="ShowyClothes">
+        <id name="shipId" type="int">
+            <column name="ShipId" />
+            <generator class="identity" />
+        </id>
+        <property name="minDistance" type="int">
+            <column name="MinDistance" not-null="true" />
+        </property>
+        <property name="maxDistance" type="int">
+            <column name="MaxDistance" not-null="true" />
+        </property>
+        <property name="fee" type="double">
+            <column name="Fee" precision="53" scale="0" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="Created" length="23" not-null="true" />
+        </property>
+        <property name="isDisabled" type="boolean">
+            <column name="isDisabled" not-null="true" />
+        </property>
+        <set name="orderses" table="Orders" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="ShipId" not-null="true" />
+            </key>
+            <one-to-many class="entity.Orders" />
+        </set>
+    </class>
+</hibernate-mapping>

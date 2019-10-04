@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 3, 2019 7:58:03 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="entity.ProductComments" table="ProductComments" schema="dbo" catalog="ShowyClothes">
+        <id name="commentId" type="int">
+            <column name="CommentId" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="users" class="entity.Users" fetch="select" lazy="false">
+            <column name="UserId" />
+        </many-to-one>
+        <many-to-one name="products" class="entity.Products" fetch="select" lazy="false">
+            <column name="ProductId" not-null="true" />
+        </many-to-one>
+        <property name="fullName" type="string">
+            <column name="FullName" not-null="true" />
+        </property>
+        <property name="review" type="string">
+            <column name="Review" not-null="true" />
+        </property>
+        <property name="rating" type="java.lang.Integer">
+            <column name="Rating" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="Created" length="23" not-null="true" />
+        </property>
+        <property name="isDisabled" type="boolean">
+            <column name="isDisabled" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

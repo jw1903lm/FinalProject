@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 3, 2019 7:58:03 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="entity.OrderDetail" table="OrderDetail" schema="dbo" catalog="ShowyClothes">
+        <composite-id name="id" class="entity.OrderDetailId">
+            <key-property name="productId" type="int">
+                <column name="ProductId" />
+            </key-property>
+            <key-property name="orderId" type="int">
+                <column name="OrderId" />
+            </key-property>
+            <key-property name="sizeId" type="int">
+                <column name="SizeId" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="orders" class="entity.Orders" update="false" insert="false" fetch="select" lazy="false">
+            <column name="OrderId" not-null="true" />
+        </many-to-one>
+        <many-to-one name="sizes" class="entity.Sizes" update="false" insert="false" fetch="select" lazy="false">
+            <column name="SizeId" not-null="true" />
+        </many-to-one>
+        <many-to-one name="products" class="entity.Products" update="false" insert="false" fetch="select" lazy="false">
+            <column name="ProductId" not-null="true" />
+        </many-to-one>
+        <property name="quantity" type="int">
+            <column name="Quantity" not-null="true" />
+        </property>
+        <property name="totalPrice" type="java.lang.Double">
+            <column name="TotalPrice" precision="53" scale="0" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="Created" length="23" not-null="true" />
+        </property>
+        <property name="isDisabled" type="boolean">
+            <column name="isDisabled" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
